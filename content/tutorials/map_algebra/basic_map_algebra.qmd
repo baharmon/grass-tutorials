@@ -9,8 +9,13 @@ description: >
   including arithmetic, functions, and logic. 
   Use map algebra to model a landscape.
 thumbnail: images/map_algebra_00.webp
+code-links:
+  - text: Download the Jupyter notebook
+    href: map_algebra.ipynb
+    icon: file-code
+    target: _blank
+resources: map_algebra.ipynb
 format:
-  ipynb: default
   html:
     toc: true
     code-tools: true
