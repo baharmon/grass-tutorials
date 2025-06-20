@@ -232,7 +232,7 @@ that acts on the entire raster.
 ## Command line
 ```{bash}
 r.surf.fractal output=fractal dimension=2.25
-r.info -r map=fractal format=plain
+r.info -r map=fractal
 ```
 ## Python
 ```{python}
