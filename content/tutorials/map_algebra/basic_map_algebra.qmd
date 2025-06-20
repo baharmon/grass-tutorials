@@ -399,14 +399,8 @@ r.mapcalc expression="random = rand(0.0, 10.0)" seed=0
 ```
 ## Python
 ```{python}
-# Import library
-import random
-
-# Set random seed
-seed = random.randint(0, 1000000)
-
 # Generate random surface
-gs.mapcalc("random = rand(0.0, 10.0)", seed=seed)
+gs.mapcalc("random = rand(0.0, 10.0)", seed=0)
 
 # Visualize
 m.d_rast(map="random")
