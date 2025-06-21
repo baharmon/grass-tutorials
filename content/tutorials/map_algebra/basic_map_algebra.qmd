@@ -472,6 +472,8 @@ In this tutorial,
 we will use `if then else` statements
 to model plateaus and rivers. 
 
+![Logic in map algebra](images/map_algebra_01.svg)
+
 ::: {#tbl-panel layout-ncol=1}
 | Logical Operator      | Syntax |
 |-----------------------|--------|
@@ -503,6 +505,8 @@ and zeros elsewhere.
 This is a zonal map algebra operation
 using logic to isolate a zone of cells.
 
+![If statement diagram](images/map_algebra_02.svg)
+
 ::: {.panel-tabset group="language"}
 ## Command line
 ```{bash}
@@ -533,6 +537,8 @@ will be assigned a value of thirty,
 while all other cells will keep their original values.
 This will flatten all of the mountain peaks above the threshold of thirty,
 forming plateaus. 
+
+![If then else statement diagram](images/map_algebra_03.svg)
 
 ::: {.panel-tabset group="language"}
 ## Command line
@@ -574,6 +580,8 @@ Then use {{< meta links.r_colors >}}
 to assign the `water` color gradient to the river raster.
 The null cells will be transparent, 
 so the river depth raster can be layered over the elevation raster.
+
+![Complex expression diagram](images/map_algebra_04.svg)
 
 ::: {.panel-tabset group="language"}
 ## Command line
