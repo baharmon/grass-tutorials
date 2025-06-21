@@ -9,12 +9,27 @@ description: >
   including arithmetic, functions, and logic. 
   Use map algebra to model a landscape.
 thumbnail: images/map_algebra_00.webp
+links:
+  r_mapcalc: "[r.mapcalc](https://grass.osgeo.org/grass-stable/manuals/r.mapcalc.html)"
+  r_mapcalc_simple: "[r.mapcalc.simple](https://grass.osgeo.org/grass-stable/manuals/r.mapcalc.simple.html)"
+  r_series: "[r.series](https://grass.osgeo.org/grass-stable/manuals/r.series.html)"
+  r_neighbors: "[r.neighbors](https://grass.osgeo.org/grass-stable/manuals/r.neighbors.html)"
+  r_mfilter: "[r.mfilter](https://grass.osgeo.org/grass-stable/manuals/r.mfilter.html)"
+  r_clump: "[r.clump](https://grass.osgeo.org/grass-stable/manuals/r.clump.html)"
+  r_univar: "[r.univar](https://grass.osgeo.org/grass-stable/manuals/r.univar.html)"
+  r_statistics: "[r.statistics](https://grass.osgeo.org/grass-stable/manuals/r.statistics.html)"
+  r_stats: "[r.stats](https://grass.osgeo.org/grass-stable/manuals/r.stats.html)"
+  r_stats_zonal: "[r.stats.zonal](https://grass.osgeo.org/grass-stable/manuals/r.stats.zonal.html)"
+  r_info: "[r.info](https://grass.osgeo.org/grass-stable/manuals/r.info.html)"
+  r_report: "[r.report](https://grass.osgeo.org/grass-stable/manuals/r.report.html)"
+  r_colors: "[r.colors](https://grass.osgeo.org/grass-stable/manuals/r.colors.html)"
+  r_surf_fractal: "[r.surf.fractal](https://grass.osgeo.org/grass-stable/manuals/r.surf.fractal.html)"
 code-links:
-  - text: Download the Jupyter notebook
-    href: map_algebra.ipynb
+  - text: Jupyter notebook
+    href: basic_map_algebra.ipynb
     icon: file-code
     target: _blank
-resources: map_algebra.ipynb
+resources: basic_map_algebra.ipynb
 format:
   html:
     toc: true
@@ -51,37 +66,38 @@ Local operations act on each raster cell in isolation.
 Focal operations act on a neighborhood around each cell.
 Zonal operations act on groups of cells. 
 Global operations act on all cells in the raster.
+While there are many tools for map algebra in GRASS, 
+this tutorial focuses on local algebraic operations 
+using the raster map calculator
+{{< meta links.r_mapcalc >}}. 
+It also briefly introduces focal operations with
+{{< meta links.r_neighbors >}},
+zonal operations using conditional statements with
+{{< meta links.r_mapcalc >}},
+and global operations with
+{{< meta links.r_info >}}. 
 
 ::: {#tbl-panel layout-ncol=1}
-| Types  | Scope                          |
-|--------|--------------------------------|
-| Local  | Each cell individually         |
-| Focal  | Each cell and its neighborhood |
-| Zonal  | Groups of cells                |
-| Global | All cells                      |
+| Types  | Scope                          | Tools                                                                                                                              |
+|--------|--------------------------------|------------------------------------------------------------------------------------------------------------------------------------|
+| Local  | Each cell individually         | {{< meta links.r_mapcalc >}}, {{< meta links.r_mapcalc_simple >}}, {{< meta links.r_series >}}, etc...                             |
+| Focal  | Each cell and its neighborhood | {{< meta links.r_mapcalc >}}, {{< meta links.r_neighbors >}}, {{< meta links.r_mfilter >}}, etc...                                 |
+| Zonal  | Groups of cells                | {{< meta links.r_mapcalc >}}, {{< meta links.r_clump >}}, {{< meta links.r_univar >}}, {{< meta links.r_stats_zonal >}}, etc... |
+| Global | All cells                      | {{< meta links.r_info >}}, {{< meta links.r_univar >}}, {{< meta links.r_stats >}}, {{< meta links.r_report >}}, etc...            |
 
 Types of map algebra operations
 :::
 
-## Tools
-While there are many tools for map algebra in GRASS, 
-this tutorial focuses on local algebraic operations 
-using the raster map calculator
-[r.mapcalc](https://grass.osgeo.org/grass-stable/manuals/r.mapcalc.html). 
-It also briefly introduces focal operations with
-[r.neighbors](https://grass.osgeo.org/grass-stable/manuals/r.neighbors.html),
-zonal operations using conditional statements with
-[r.mapcalc](https://grass.osgeo.org/grass-stable/manuals/r.mapcalc.html),
-and global operations with
-[r.info](https://grass.osgeo.org/grass-stable/manuals/r.info.html). 
-
 ## Raster Calculator
 The raster map calculator
-[r.mapcalc](https://grass.osgeo.org/grass-stable/manuals/r.mapcalc.html)
+{{< meta links.r_mapcalc >}}
 uses map algebra expressions to transform rasters. 
 The left side of the expression is the output raster map,
 while the right side is the input syntax including
 rasters, operators, functions, and variables.
+The raster map calculator can be run
+from the graphical user interface (GUI),
+from the command line, or with Python.
 
 ::: {.panel-tabset group="language"}
 ## GUI
@@ -175,13 +191,6 @@ gs.create_project(path=temporary.name, name="xy")
 # Start GRASS in this project
 session = gj.init(Path(temporary.name, "xy"))
 
-# Print projection
-projection = gs.read_command("g.proj", flags="p")
-print(projection)
-
-# Use temporary region
-gs.use_temp_region()
-
 # Set region
 gs.run_command("g.region", n=200, e=800, s=0, w=0, res=1)
 ```
@@ -195,7 +204,7 @@ We can represent a flat plain with a constant raster
 that has the same elevation value for every cell.
 It is very easy to create constant rasters like this with map algebra. 
 We will use the raster map calculator
-[r.mapcalc](https://grass.osgeo.org/grass-stable/manuals/r.mapcalc.html)
+{{< meta links.r_mapcalc >}}
 to create a new raster with a constant value of zero,
 representing flat terrain at mean sea level. 
 In the raster map calculator,
@@ -225,11 +234,11 @@ m.show()
 # Fractals
 Now let's model more interesting mountainous terrain
 as a base for the rest of the tutorial. 
-Use [r.surf.fractal](https://grass.osgeo.org/grass-stable/manuals/r.surf.fractal.html)
+Use {{< meta links.r_surf_fractal >}}
 to generate a fractal surface that simulates mountainous terrain.
 If you want reproducible results, set a seed. 
 Find the height of the mountains by printing the elevation range with 
-[r.info](https://grass.osgeo.org/grass-stable/manuals/r.info.html).
+{{< meta links.r_info >}}.
 This report is an example of a global map algebra operation 
 that acts on the entire raster.
 
@@ -263,13 +272,13 @@ print(info)
 Next let's try arithmetic with map algebra.
 Since our fractal mountains are too high, 
 rescale them with the raster map calculator
-[r.mapcalc](https://grass.osgeo.org/grass-stable/manuals/r.mapcalc.html).
+{{< meta links.r_mapcalc >}}.
 Write the expression `elevation = fractal / 10`
 to create a new elevation raster
 equal to the fractal surface divided by ten. 
 This is a local map algebra operation using simple arithmetic.
 Print the rescaled elevation range with 
-[r.info](https://grass.osgeo.org/grass-stable/manuals/r.info.html).
+{{< meta links.r_info >}}.
 
 ::: {.panel-tabset group="language"}
 ## Command line
@@ -302,7 +311,7 @@ Map algebra has arithmetic functions as well as operators.
 Let's take the absolute value of our terrain 
 to model river valleys winding through our fractal mountains. 
 In the raster map calculator
-[r.mapcalc](https://grass.osgeo.org/grass-stable/manuals/r.mapcalc.html),
+{{< meta links.r_mapcalc >}},
 write the expression `elevation = abs(elevation)`
 to create a new elevation raster
 equal to absolute value of the fractal surface.
@@ -312,7 +321,7 @@ taking its absolute value
 will raise the low-lying valleys into mountains. 
 The elevation gradient close to zero will become river valleys
 at the feet of the mountains. 
-Use [r.colors](https://grass.osgeo.org/grass-stable/manuals/r.colors.html)
+Use {{< meta links.r_colors >}}
 to assign a color gradient to the elevation raster,
 ensuring that the gradient fits rescaled elevation range of the raster.
 
@@ -339,8 +348,13 @@ m.show()
 
 # Neighborhoods
 Let's try a focal map algebra operation that acts on a neighborhood of cells.
-Use nearest neighbors analysis with 
-[r.neighbors](https://grass.osgeo.org/grass-stable/manuals/r.neighbors.html)
+The easiest way to do this is with nearest neighbors analysis with 
+{{< meta links.r_neighbors >}},
+but it can also be done by 
+[defining a moving window](https://grasswiki.osgeo.org/wiki/GRASS_Python_Scripting_Library#r.mapcalc_example:_defining_a_moving_window)
+for r.mapcalc. 
+Use
+{{< meta links.r_neighbors >}}
 to smooth the elevation raster, 
 simulating the weathering of old mountains. 
 Set the input raster to our `elevation` raster, 
@@ -387,7 +401,7 @@ m.show()
 # Randomness
 We can use map algebra to inject randomness in our raster data. 
 Use the raster map calculator
-[r.mapcalc](https://grass.osgeo.org/grass-stable/manuals/r.mapcalc.html)
+{{< meta links.r_mapcalc >}}
 to generate a random surface,
 simulating the height of the forest canopy.
 Write the expression `random = rand(0.0, 10.0)`
@@ -417,7 +431,7 @@ m.show()
 ![Randomness](images/map_algebra_08.webp)
 
 Use the raster map calculator
-[r.mapcalc](https://grass.osgeo.org/grass-stable/manuals/r.mapcalc.html)
+{{< meta links.r_mapcalc >}}
 to add the height of the forest canopy to the elevation gradient,
 simulating the forested terrain. 
 Write the expression `forest = elevation + random`
@@ -476,7 +490,7 @@ Logical operators
 ## If statements
 Let's use logic in map algebra to transform the mountain peaks into plateaus.
 First use the raster map calculator
-[r.mapcalc](https://grass.osgeo.org/grass-stable/manuals/r.mapcalc.html)
+{{< meta links.r_mapcalc >}}
 with an `if` statement to find all cells with an elevation above thirty. 
 Write the expression `plateaus = if(elevation > 30)`.
 Simple if statements with the form `if(x)`
@@ -509,7 +523,7 @@ m.show()
 
 ## If then else statements
 Now use the raster map calculator
-[r.mapcalc](https://grass.osgeo.org/grass-stable/manuals/r.mapcalc.html)
+{{< meta links.r_mapcalc >}}
 to model the plateaus using an `if then else` statement. 
 In map algebra, the syntax for these logical statements is `if(x, a, b)` 
 where if the relational statement `x` is true, then do `a`, else do `b`.
@@ -544,7 +558,7 @@ m.show()
 ## Complex expressions
 Use map algebra to model a river that fills the valleys.
 With the raster map calculator
-[r.mapcalc](https://grass.osgeo.org/grass-stable/manuals/r.mapcalc.html)
+{{< meta links.r_mapcalc >}}
 write the expression `river = if(elevation < 6, 6 - elevation, null())`
 to simulate the depth of the river. 
 This is more complicated map algebra expression
@@ -556,7 +570,7 @@ have values less than six,
 then they will be assigned the difference
 between six and the elevation raster, 
 else they will be assigned null values. 
-Then use [r.colors](https://grass.osgeo.org/grass-stable/manuals/r.colors.html)
+Then use {{< meta links.r_colors >}}
 to assign the `water` color gradient to the river raster.
 The null cells will be transparent, 
 so the river depth raster can be layered over the elevation raster.
