@@ -567,7 +567,7 @@ With the raster map calculator
 {{< meta links.r_mapcalc >}}
 write the expression `river = if(elevation < 6, 6 - elevation, null())`
 to simulate the depth of the river. 
-This is more complicated map algebra expression
+This is a more complicated map algebra expression
 that combines logic with an `if then else` statement,
 arithmetical operations between rasters,
 and the internal variable `null()`.
