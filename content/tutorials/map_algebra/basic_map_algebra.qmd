@@ -116,7 +116,7 @@ gs.mapcalc("output = input")
 The raster calculator can be used for the simplest of tasks such as 
 copying rasters, creating constant rasters, scaling rasters,
 patching rasters together, or adding rasters together.
-It can also be used more sophisticated tasks such as 
+It can also be used for more sophisticated tasks such as 
 normalizing rasters,
 processing imagery,
 calculating vegetation indices,
