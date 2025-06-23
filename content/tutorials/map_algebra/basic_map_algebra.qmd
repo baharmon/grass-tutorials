@@ -197,7 +197,7 @@ gs.run_command("g.region", n=200, e=800, s=0, w=0, res=1)
 :::
 
 # Constants
-In this tutorial, we will be modeling a landscape, 
+We will be modeling a landscape, 
 so let's start with the simplest of landforms - 
 a flat plain.
 We can represent a flat plain with a constant raster
