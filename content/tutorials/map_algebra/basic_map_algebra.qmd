@@ -535,7 +535,7 @@ Write the expression `elevation = if(elevation > 30, 30, elevation)`.
 All cells with elevation values greater than thirty
 will be assigned a value of thirty, 
 while all other cells will keep their original values.
-This will flatten all of the mountain peaks above the threshold of thirty,
+This will flatten all of the mountain peaks above the threshold of 30,
 forming plateaus. 
 
 ![If then else statement diagram](images/map_algebra_03.svg)
