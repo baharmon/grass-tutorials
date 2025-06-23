@@ -532,8 +532,8 @@ to model the plateaus using an `if then else` statement.
 In map algebra, the syntax for these logical statements is `if(x, a, b)` 
 where if the relational statement `x` is true, then do `a`, else do `b`.
 Write the expression `elevation = if(elevation > 30, 30, elevation)`.
-All cells with elevation values greater than thirty
-will be assigned a value of thirty, 
+All cells with elevation values greater than 30
+will be assigned a value of 30, 
 while all other cells will keep their original values.
 This will flatten all of the mountain peaks above the threshold of 30,
 forming plateaus. 
