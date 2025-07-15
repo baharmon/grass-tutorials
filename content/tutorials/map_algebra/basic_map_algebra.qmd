@@ -8,7 +8,7 @@ description: >
   Learn the basics of map algebra in GRASS
   including arithmetic, functions, and logic. 
   Use map algebra to model a landscape.
-thumbnail: images/map_algebra_00.webp
+image: images/map_algebra_01.webp
 links:
   g_region: "[g.region](https://grass.osgeo.org/grass-stable/manuals/g.region.html)"
   r_mapcalc: "[r.mapcalc](https://grass.osgeo.org/grass-stable/manuals/r.mapcalc.html)"
