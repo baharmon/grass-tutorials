@@ -1,5 +1,5 @@
 ---
-title: "Terrain synthesis"
+title: "Earthworks: Terrain Synthesis"
 author: "Brendan Harmon"
 date: 2025-06-30
 date-modified: today
@@ -87,6 +87,7 @@ with a Cartesian (XY) coordinate system.
 ## Command line
 
 ```{bash}
+grass --tmp-project XY
 ```
 
 ## Python

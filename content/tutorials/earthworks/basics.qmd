@@ -1,5 +1,5 @@
 ---
-title: "Basic earthworks"
+title: "Earthworks: Basics"
 author: "Brendan Harmon"
 date: 2025-07-02
 date-modified: today
@@ -38,7 +38,7 @@ jupyter: python3
 
 Learn the basics of terrain modeling with 
 {{< meta links.r_earthworks >}}.
-This tool uses cut and fill operations to tranform topography. 
+This tool uses cut and fill operations to transform topography. 
 Cut operations subtract from a topographic surface, 
 while fill operations add to the topography. 
 Transformations are based on proposed local topographic extrema,
@@ -81,6 +81,7 @@ with a Cartesian (XY) coordinate system.
 ## Command line
 
 ```{bash}
+grass --tmp-project XY
 ```
 
 ## Python
@@ -180,7 +181,7 @@ with {{< meta links.r_earthworks >}}.
 These coordinates represents a local topographic maxima, 
 i.e. a high point.
 The algorithm will fill locally up to that point,
-then the slopes will falloff at a given rate of decay.
+then the slopes will fall off at a given rate of decay.
 Set `coordinates` to a pair of x- and y-coordinates.
 Use the `z` parameter to set a z-coordinate for the top of the peak. 
 Optionally use the `flat` parameter to create a plateau at the top of the peak.

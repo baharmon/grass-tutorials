@@ -1,6 +1,6 @@
 ---
-title: "Terrain modeling with r.earthworks in GRASS"
-author: "Brnedan Harmon"
+title: "Earthworks"
+author: "Brendan Harmon"
 date: 2025-07-07
 date-modified: today
 image: images/earthworks_01.webp
@@ -22,9 +22,7 @@ execute:
 
 ![Random fill operation with r.earthworks](images/earthworks_01.webp)
 
-<!-- Replace with new image -->
-
-Learn how model terrain with {{< meta links.r_earthworks >}}. With this tool you can generate new terrain or modify exisiting terrain using cut and fill operations inspired by earthworking. The first tutorial on the basics of terrain modeling introduces key concepts such as cut and fill operations. The subsequent tutorials introduce more advanced concepts such as relative operations and growth and decay functions. These tutorials demonstrate how to generate terrain, model natural landforms, and model anthropogenic landforms - i.e. earthworks - such as roads, dams, and levees. Read our [paper](https://raw.githubusercontent.com/baharmon/r.earthworks/main/paper/paper.pdf) to learn more. 
+Learn how model terrain with {{< meta links.r_earthworks >}}. With this tool you can generate new terrain or modify existing terrain using cut and fill operations inspired by earthworking. The first tutorial on the basics of terrain modeling introduces key concepts such as cut and fill operations. The subsequent tutorials introduce more advanced concepts such as relative operations and growth and decay functions. These tutorials demonstrate how to generate terrain, model natural landforms, and model anthropogenic landforms - i.e. earthworks - such as roads, dams, and levees. Read our [paper](https://raw.githubusercontent.com/baharmon/r.earthworks/main/paper/paper.pdf) to learn more. 
 
 <!-- Update link when paper published -->
 
@@ -55,7 +53,7 @@ Learn the basics of terrain modeling with r.earthworks.
 2. **[Gully modeling](./gullies.qmd)**  
 Model gullies using relative cut operations.
 
-3. **[Levee improvement & ridge restoration](./levees.qmd)**  
+3. **[Coastal infrastructure](./levees.qmd)**  
 Model coastal infrastructure projects including levees and restored alluvial ridges.
 
 4. **[Terrain synthesis](./synthesis.qmd)**  

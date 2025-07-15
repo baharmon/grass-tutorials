@@ -1,5 +1,5 @@
 ---
-title: "Gully modeling"
+title: "Earthworks: Gully Modeling"
 author: "Brendan Harmon"
 date: 2025-07-02
 date-modified: today
@@ -48,9 +48,9 @@ While absolute operations calculate cut and fill
 based on a vertical datum of zero
 and can be used to model features at a given elevation, 
 relative operations calculate cut and fill
-relative to the exisiting topography
+relative to the existing topography
 and can be used to model features 
-that follow the exisiting terrain.
+that follow the existing terrain.
 
 Use a relative earthworking operation 
 with an exponential function to 
@@ -59,7 +59,7 @@ In this tutorial
 all of the data will be created procedurally
 including the terrain and the streams.
 Start by generating fractal terrain. 
-Then model flow acculumation 
+Then model flow accumulation 
 through the fractal terrain
 and extract its stream network. 
 Finally use the vector map of streams 
@@ -95,6 +95,7 @@ with a Cartesian (XY) coordinate system.
 ## Command line
 
 ```{bash}
+grass --tmp-project XY
 ```
 
 ## Python

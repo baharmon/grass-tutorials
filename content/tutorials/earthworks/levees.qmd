@@ -1,5 +1,5 @@
 ---
-title: "Modeling coastal infrastructure"
+title: "Earthworks: Modeling Coastal Infrastructure"
 author: "Brendan Harmon"
 date: 2025-07-06
 date-modified: today
@@ -70,13 +70,18 @@ Learn how to work with notebooks in the tutorial
 
 ## Project
 
-Start a GRASS session in the Bayou L'Ours project. 
+Download and unarchive the 
+[Bayou L'Ours Dataset](https://doi.org/10.5281/zenodo.15870441). 
+Then start a GRASS session in the Bayou L'Ours project. 
+Since the dataset is approximately 120MB, 
+it may take a couple minutes to download.
 
 ::: {.panel-tabset group="language"}
 
 ## Command line
 
 ```{bash}
+grass ~/grassdata/bayou_lours/PERMANENT
 ```
 
 ## Python
@@ -87,6 +92,8 @@ import os
 import sys
 import subprocess
 from pathlib import Path
+import urllib.request
+from zipfile import ZipFile
 
 # Find GRASS Python packages
 sys.path.append(
@@ -100,10 +107,26 @@ sys.path.append(
 import grass.script as gs
 import grass.jupyter as gj
 
-# Download dataset
+# Set GRASS database
+gisdbase = os.path.join(Path.home(), "grassdata")
 
-# Start GRASS in this project
-session = gj.init("~/grassdata/bayou_lours")
+# Download dataset
+url = "https://zenodo.org/records/15870442/files/bayou_lours.zip?download=1"
+filepath = os.path.join(gisdbase, "bayou_lours.zip")
+try:
+    urllib.request.urlretrieve(url, filepath)
+except Exception as e:
+    print(f"Error downloading file: {e}")
+
+# Unarchive dataset
+with ZipFile(filepath, 'r') as archive:
+    archive.extractall(gisdbase)
+
+# Delete archive
+os.remove(filepath)
+
+# Start GRASS in Bayou L'Ours project
+session = gj.init(Path(gisdbase, "bayou_lours"))
 ```
 
 :::
@@ -239,7 +262,7 @@ m.save("images/levees_02.webp")
 
 ## Flood Simulation
 
-Use {{< meta links.r_lake >}} to model innudation from storm surge. 
+Use {{< meta links.r_lake >}} to model inundation from storm surge. 
 Set the water level to one meter and the coordinates to `1109000, 102750`.
 The simulation will show that the degraded ridge
 would be overtopped by a meter of surge.
@@ -330,17 +353,22 @@ the borrow needed to build it.
 The restored ridge should have
 a crest elevation of 1.5 meters,
 a crest width of 15.2 meters,
-and 20% slopes with a ratio of 5H:1V.
+and 20% slopes with a ratio of 5H:1V,
+i.e. a horizontal run of 5 meters
+for a vertical rise of 1 meter.
 The soil to rebuild the ridge
-should be taken from a borrow area
+should be taken onsite 
+from an adjacent borrow area
 that would be offset by 7.6 meters 
 from the foot of the ridge. 
 
 ## Borrow Area
-
-Model the borrow area
-by offsetting the proposed ridge
-and then performing a cut operation.
+Start by modeling the borrow area - 
+an excavation for sourcing material for construction -
+needed to restore the ridge.
+To model the borrow area,
+offset the proposed ridge
+and then perform a cut operation.
 First use {{< meta links.v_transform >}}
 to shift the vector map of the proposed ridgeline 
 36 meters to the north.
@@ -405,13 +433,12 @@ Set `elevation` to the earthworks raster,
 `rate` to 0.2,
 and `flat` to 7.6. 
 
-
 ::: {.panel-tabset group="language"}
 
 ## Command line
 
 ```{bash}
-r.earthworks elevation=earthworks arthworks=earthworks operation=fill lines=ridges z=1.5 rate=0.2 flat=7.6 --overwrite
+r.earthworks elevation=earthworks earthworks=earthworks operation=fill lines=ridges z=1.5 rate=0.2 flat=7.6 --overwrite
 d.rast map=earthworks
 d.legend raster=earthworks color=white at=5,95,1,3
 ```
@@ -502,6 +529,9 @@ Use a fill operation with
 {{< meta links.r_earthworks >}}
 to model gap closures
 with sheet pile structures.
+These structures are walls 
+built from rows of interlocking vertical segments 
+of piles that are driven into the ground. 
 Set `elevation` to the earthworks raster,
 `lines` to the gaps vector,
 `z` to -0.6,
@@ -574,7 +604,7 @@ m.save("images/levees_08.webp")
 
 Test proposed coastal infrastructure with simulated storm surge.
 Use {{< meta links.r_lake >}} 
-to model innudation from storm surge over the earthworks raster.
+to model inundation from storm surge over the earthworks raster.
 Set the water level to one meter and the coordinates to `1109000, 102750`.
 The simulation will show that the restored ridge with closed gaps
 would be not overtopped by a meter of surge.
