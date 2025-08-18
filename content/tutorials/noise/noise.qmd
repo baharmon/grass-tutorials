@@ -428,8 +428,9 @@ for octave in range(octaves):
     dimension = dimension + gain
     amplitude = amplitude + gain
     wavelength = round(wavelength * lacunarity)
-    if not (wavelength & 1):
-        wavelength = wavelength + 1
+```suggestion
+    if wavelength % 2 == 0:
+        wavelength += 1
 
 # Visualize
 m = gj.Map(width=800)
