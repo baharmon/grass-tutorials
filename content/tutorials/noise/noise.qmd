@@ -8,6 +8,8 @@ description: Learn how to generate procedural noise using Python scripting in GR
 image: images/noise_01.webp
 links:
   g_region: "[g.region](https://grass.osgeo.org/grass-stable/manuals/g.region.html)"
+  g_extension: "[g.extension](https://grass.osgeo.org/grass-stable/manuals/g.extension.html)"
+  r_random_walk: "[r.random.walk](https://grass.osgeo.org/grass-stable/manuals/addons/r.random.walk.html)"
   r_mapcalc: "[r.mapcalc](https://grass.osgeo.org/grass-stable/manuals/r.mapcalc.html)"
   r_neighbors: "[r.neighbors](https://grass.osgeo.org/grass-stable/manuals/r.neighbors.html)"
   r_surf_fractal: "[r.surf.fractal](https://grass.osgeo.org/grass-stable/manuals/r.surf.fractal.html)"
@@ -37,6 +39,7 @@ such as terrain, water, and clouds.
 Let's implement procedural noise using map algebra in GRASS!
 This tutorial covers:
 
+* Random walks
 * Gradient noise
 * Billow noise
 * Ridge noise
@@ -92,6 +95,74 @@ session = gj.init(Path(temporary.name, "xy"))
 gs.run_command("g.region", n=200, e=800, s=0, w=0, res=1)
 ```
 
+# Random Walks
+
+In a random walk,
+a walker traverses a space 
+by taking a sequence of steps
+in random directions. 
+Random walks can used to simulate stochastic processes
+such as migration, searching, foraging, accumulation, and diffusion.
+Depending on the number of walkers and steps,
+2-dimensional random walks can create 
+sparse or dense stochastic surfaces,
+which can be useful 
+for generating other forms of procedural noise.
+In GRASS, 2-dimensional random walks 
+can be generated with the addon
+{{< meta links.r_random_walk >}}.
+Walkers will traverse the computational region,
+each stepping cell by cell 
+in a random direction
+across a raster grid. 
+The output raster records the frequency of visits per cell. 
+First install {{< meta links.r_random_walk >}} with
+{{< meta links.g_extension >}}. 
+
+```{python}
+gs.run_command("g.extension", extension="r.random.walk")
+```
+
+Then run {{< meta links.r_random_walk >}} 
+with multiple walkers.
+Experiment with the parameters.
+Try varying the number of steps and walkers.
+If it runs slowly, try increasing the memory or number of processes.
+The resulting random walk can be used
+instead of an initial random or fractal surface
+in the following sections of this tutorial.
+
+```{python}
+# Set parameters
+directions = 8
+steps = 50000
+walkers = 10
+memory = 1200
+
+# Generate random walks
+gs.run_command(
+    "r.random.walk",
+    output="walk",
+    directions=directions,
+    steps=steps,
+    nwalkers=walkers,
+    memory=memory,
+    flags="s",
+    overwrite=True
+    )
+
+# Set color gradient
+gs.run_command("r.colors", map="walk", color="viridis")
+
+# Visualize
+m = gj.Map(width=800)
+m.d_rast(map="walk")
+m.d_legend(raster="walk", color="white", at=(5, 95, 1, 3))
+m.show()
+```
+
+![Random walks](images/noise_00.webp)
+
 # Gradient Noise
 
 The original form of gradient noise - Perlin noise - 
@@ -121,7 +192,9 @@ the `iterations` of smoothing,
 and the `wavelength` of the moving window.
 Experiment with these parameters. 
 Try setting different values for each of them. 
-Then try using a fractal surface
+Then try using random walks
+generated with {{< meta links.r_random_walk >}}
+or a fractal surface
 generated with {{< meta links.r_surf_fractal >}}
 instead of a random surface. 
 
@@ -148,6 +221,9 @@ for i in range(iterations):
       flags="c",
       overwrite=True
       )
+
+# Set color gradient
+gs.run_command("r.colors", map="noise", color="viridis")
 
 # Visualize
 m = gj.Map(width=800)
@@ -428,7 +504,6 @@ for octave in range(octaves):
     dimension = dimension + gain
     amplitude = amplitude + gain
     wavelength = round(wavelength * lacunarity)
-```suggestion
     if wavelength % 2 == 0:
         wavelength += 1
 
