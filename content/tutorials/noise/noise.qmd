@@ -106,7 +106,12 @@ gs.create_project(path=temporary.name, name="xy")
 session = gj.init(Path(temporary.name, "xy"))
 
 # Set region
-gs.run_command("g.region", n=200, e=800, s=0, w=0, res=1)
+north = 200
+east = 800
+south = 0
+west = 0
+res = 1
+gs.run_command("g.region", n=north, e=east, s=south, w=west, res=res)
 ```
 
 # Random Walks
