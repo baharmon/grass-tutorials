@@ -123,6 +123,51 @@ You can either specify it in the YAML header (`image: image.webp`) or add `{.pre
 ![Slope map](slope.webp){.preview-image}
 ```
 
+## References
+
+To cite references, 
+you should create a bibtex file with bibliographic entries,
+reference the bibliography and citation style in your tutorial's frontmatter,
+and then add citations in Markdown to your tutorial.
+A list of works cited will be automatically generated at the end of your tutorial.
+Please use the acm.csl citation style that is in the root of the project. 
+
+Save a bibtex file in your tutorial directory:
+
+```bibtex
+@software{GRASS:2025,
+title = {{GRASS}},
+author = {{GRASS Development Team}},
+organization = {Open Source Geospatial Foundation},
+doi = {10.5281/zenodo.5176030},
+license = {GPL-2.0-or-later},
+month = {11},
+url = {https://github.com/OSGeo/grass},
+version = {8.4.2},
+year = {2025}
+}
+```
+
+Reference your bibtex file
+and the project's citation style language file
+in your tutorial's YAML frontmatter:
+
+```yaml
+bibliography: tutorial.bib
+csl: ../../../acm.csl
+```
+
+In your tutorial, 
+add citations in Markdown with `[@citation]`.
+This will create an inline citation
+and automatically generate a bibliography
+in a reference section
+at the end of the tutorial.
+
+```markdown
+[@GRASS:2025]
+```
+
 ## External tutorials
 
 If you want to have your GRASS external tutorials listed, you can create a `.yml` file
