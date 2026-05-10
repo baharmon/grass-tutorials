@@ -101,10 +101,13 @@ bash Miniforge3-$(uname)-$(uname -m).sh
 :::
 
 ::: {.callout-note title="Windows"}
-For {{< fa brands microsoft >}} Windows, 
+The GRASS Python package
+for {{< fa brands microsoft >}} Windows is coming soon!
+In the meantime, try the package for Windows Subsystem for Linux instead.
+<!-- For {{< fa brands microsoft >}} Windows, 
 download and run the binary installer. 
 See [here](https://github.com/conda-forge/miniforge#install)
-for more detailed instructions.
+for more detailed instructions. -->
 :::
 
 ## Environment
@@ -198,12 +201,9 @@ sys.path.append(
 import grass.script as gs
 import grass.jupyter as gj
 
-# Set GRASS database
-gisdbase = Path.home() / "grassdata"
-
 # Download dataset
 url = "https://zenodo.org/records/13370131/files/natural_earth_dataset.zip?download=1"
-filepath = gisdbase / "natural_earth_dataset.zip"
+filepath = Path.cwd() / "natural_earth_dataset.zip"
 request = requests.get(url, allow_redirects=True)
 if request.status_code != 200:
     raise ConnectionError(f"Error downloading file: {request.status_code}")
@@ -211,13 +211,13 @@ filepath.write_bytes(request.content)
 
 # Unarchive dataset
 with ZipFile(filepath, 'r') as archive:
-    archive.extractall(gisdbase)
+    archive.extractall()
 
 # Delete archive
 os.remove(filepath)
 
 # Start GRASS in project
-session = gj.init(gisdbase / "natural_earth_dataset")
+session = gj.init(Path.cwd() / "natural_earth_dataset")
 
 # Print projection information
 gs.run_command("g.proj", flags="g")
