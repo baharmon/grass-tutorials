@@ -128,7 +128,8 @@ You can either specify it in the YAML header (`image: image.webp`) or add `{.pre
 To cite references, 
 you should create a bibtex file with bibliographic entries,
 reference the bibliography and citation style in your tutorial's frontmatter,
-and then add citations in Markdown to your tutorial.
+<!-- and then add citations in Markdown to your tutorial. -->
+and then add inline citations in Markdown format in the body of the text.
 A list of works cited will be automatically generated at the end of your tutorial.
 Please use the acm.csl citation style that is in the root of the project. 
 
@@ -160,7 +161,8 @@ csl: ../../../acm.csl
 In your tutorial, 
 add citations in Markdown with `[@citation]`.
 This will create an inline citation
-and automatically generate a bibliography
+and automatically generate
+a list of works cited
 in a reference section
 at the end of the tutorial.
 
@@ -210,7 +212,7 @@ Check your markdown with a [linter](https://dlaa.me/markdownlint/) and fix as ma
 Follow the [GitHub guide](https://grass.osgeo.org/grass-devel/manuals/github_guide.html)
 (adapt it to this repo) to submit your tutorial.
 You should **only commit the .qmd file and images**. 
-Once you sumbmit a PR, the CI pipeline will build your
+Once you submit a PR, the CI pipeline will build your
 tutorial, so you and a reviewer can check if everything is ok.
 When a reviewer approves, your PR will be merged soon.
 
