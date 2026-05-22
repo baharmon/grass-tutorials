@@ -8,7 +8,6 @@ description: >
     Get started with GRASS for Conda.
 image: images/natural-earth-01.webp
 bibliography: conda.bib
-csl: ../../../acm.csl
 links:
   grass_projects: "[projects](https://grass.osgeo.org/grass-devel/manuals/grass_projects.html)"
   g_proj: "[g.proj](https://grass.osgeo.org/grass-stable/manuals/g.proj.html)"
