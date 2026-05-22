@@ -7,7 +7,6 @@ categories: [earthworks, terrain, raster, beginner]
 description: Learn the basics of terrain modeling with r.earthworks.
 image: images/basics_05.webp
 bibliography: earthworks.bib
-csl: ../../../acm.csl
 links:
   r_earthworks: "[r.earthworks](https://grass.osgeo.org/grass-stable/manuals/addons/r.earthworks.html)"
   wxgui_rdigit: "[raster digitizer](https://grass.osgeo.org/grass-stable/manuals/wxGUI.rdigit.html)"

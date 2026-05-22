@@ -5,7 +5,6 @@ date: 2025-07-07
 date-modified: today
 image: images/earthworks_01.webp
 bibliography: earthworks.bib
-csl: ../../../acm.csl
 links:
   r_earthworks: "[r.earthworks](https://grass.osgeo.org/grass-stable/manuals/addons/r.earthworks.html)"
   g_extension: "[g.extension](https://grass.osgeo.org/grass-stable/manuals/g.extension.html)"

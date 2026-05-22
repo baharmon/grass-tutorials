@@ -127,11 +127,10 @@ You can either specify it in the YAML header (`image: image.webp`) or add `{.pre
 
 To cite references, 
 you should create a bibtex file with bibliographic entries,
-reference the bibliography and citation style in your tutorial's frontmatter,
-<!-- and then add citations in Markdown to your tutorial. -->
+reference the bibliography in your tutorial's frontmatter,
 and then add inline citations in Markdown format in the body of the text.
 A list of works cited will be automatically generated at the end of your tutorial.
-Please use the acm.csl citation style that is in the root of the project. 
+This project is configured to use the acm.csl citation style in its root directory. 
 
 Save a bibtex file in your tutorial directory:
 
@@ -150,12 +149,10 @@ year = {2025}
 ```
 
 Reference your bibtex file
-and the project's citation style language file
 in your tutorial's YAML frontmatter:
 
 ```yaml
 bibliography: tutorial.bib
-csl: ../../../acm.csl
 ```
 
 In your tutorial, 

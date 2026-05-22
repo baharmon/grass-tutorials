@@ -7,7 +7,6 @@ categories: [earthworks, terrain, coast, raster, beginner]
 description: Model levees and alluvial ridges with r.earthworks.
 image: images/levees_08.webp
 bibliography: earthworks.bib
-csl: ../../../acm.csl
 links:
   r_earthworks: "[r.earthworks](https://grass.osgeo.org/grass-stable/manuals/addons/r.earthworks.html)"
   g_extension: "[g.extension](https://grass.osgeo.org/grass-stable/manuals/g.extension.html)"

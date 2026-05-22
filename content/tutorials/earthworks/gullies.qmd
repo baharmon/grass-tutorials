@@ -7,7 +7,6 @@ categories: [earthworks, terrain, raster, beginner]
 description: Model gullies using relative cut operations with r.earthworks.
 image: images/gullies_03.webp
 bibliography: earthworks.bib
-csl: ../../../acm.csl
 links:
   r_earthworks: "[r.earthworks](https://grass.osgeo.org/grass-stable/manuals/addons/r.earthworks.html)"
   r_sim_terrain: "[r.sim.terrain](https://grass.osgeo.org/grass-stable/manuals/addons/r.sim.terrain.html)"
