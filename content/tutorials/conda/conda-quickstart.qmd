@@ -47,16 +47,6 @@ This brief tutorial covers:
 * Creating a GRASS environment with Conda
 * Running GRASS in a Jupyter notebook
 
-<!--
-::: {.callout-note title="In-depth tutorial"}
-For a more in-depth guide covering 
-installers, package managers, computational notebooks, 
-and integrated development environments, 
-please see the
-[GRASS for Conda](conda.qmd) tutorial.
-:::
--->
-
 ## Manager
 
 Conda is an open source package and environment manager.
@@ -100,13 +90,10 @@ bash Miniforge3-$(uname)-$(uname -m).sh
 :::
 
 ::: {.callout-note title="Windows"}
-The GRASS Python package
-for {{< fa brands microsoft >}} Windows is coming soon!
-In the meantime, try the package for Windows Subsystem for Linux instead.
-<!-- For {{< fa brands microsoft >}} Windows, 
+For {{< fa brands microsoft >}} Windows, 
 download and run the binary installer. 
 See [here](https://github.com/conda-forge/miniforge#install)
-for more detailed instructions. -->
+for more detailed instructions.
 :::
 
 ## Environment
@@ -216,7 +203,9 @@ with ZipFile(filepath, 'r') as archive:
 os.remove(filepath)
 
 # Start GRASS in project
-session = gj.init(Path.cwd() / "natural_earth_dataset")
+home = Path.cwd()
+project = "natural_earth_dataset"
+session = gj.init(home, project)
 
 # Print projection information
 gs.run_command("g.proj", flags="g")
