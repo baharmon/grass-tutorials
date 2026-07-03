@@ -187,6 +187,7 @@ sys.path.append(
 # Import GRASS packages
 import grass.script as gs
 import grass.jupyter as gj
+from grass.tools import Tools
 
 # Download dataset
 url = "https://zenodo.org/records/13370131/files/natural_earth_dataset.zip?download=1"
@@ -207,9 +208,10 @@ os.remove(filepath)
 home = Path.cwd()
 project = "natural_earth_dataset"
 session = gj.init(home, project)
+tools = Tools()
 
 # Print projection information
-gs.run_command("g.proj", flags="g")
+tools.g_proj(format="shell", flags="p")
 ```
 
 ### Display raster map
@@ -242,7 +244,7 @@ scaling the line width by stream order.
 ```{python}
 # Display rivers
 m = gj.Map(width=800)
-gs.run_command("v.colors", map="rivers", use="attr", column="scalerank", color="water")
+tools.v_colors(map="rivers", use="attr", column="scalerank", color="water")
 m.d_vect(map="rivers", width_column="strokeweig", width_scale=2)
 m.show()
 ```
