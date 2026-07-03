@@ -14,7 +14,7 @@ format:
     code-copy: true
     code-fold: false
 page-layout: article
-categories: [beginner, GUI, imagery, remote sensing, visualization]
+categories: [beginner, GUI, imagery, remote sensing, visualization, Portuguese]
 description: Análise e visualização de imagens de satélite multiespectrais utilizando fusão de imagens, índices ambientais e redução de dimensionalidade com análise de componentes principais.
 execute: 
   eval: false
@@ -194,28 +194,28 @@ r.colors -e map=landsat8_2024_B7 color=grey
 
 ```{python}
 gs.run_command("r.colors",
-               map=landsat8_2024_B2,
-               color=grey,
+               map="landsat8_2024_B2",
+               color="grey",
                flags="e")
 gs.run_command("r.colors",
-               map=landsat8_2024_B3,
-               color=grey,
+               map="landsat8_2024_B3",
+               color="grey",
                flags="e")
 gs.run_command("r.colors",
-               map=landsat8_2024_B4,
-               color=grey,
+               map="landsat8_2024_B4",
+               color="grey",
                flags="e")
 gs.run_command("r.colors",
-               map=landsat8_2024_B5,
-               color=grey,
+               map="landsat8_2024_B5",
+               color="grey",
                flags="e")
 gs.run_command("r.colors",
-               map=landsat8_2024_B6,
-               color=grey,
+               map="landsat8_2024_B6",
+               color="grey",
                flags="e")
 gs.run_command("r.colors",
-               map=landsat8_2024_B7,
-               color=grey,
+               map="landsat8_2024_B7",
+               color="grey",
                flags="e")
                
 ```
@@ -379,11 +379,11 @@ i.vi output=Flagstaff_NDVI viname=ndvi red=landsat8_2024_B4 nir=landsat8_2024_B5
 ```{python}
 gs.run_command("g.region", raster="landsat8_2024_B2")
 
-gs.run_command("i.vi", 
-                output=Flagstaff_NDVI, 
-                viname=ndvi, 
-                red=landsat8_2024_B4, 
-                nir=landsat8_2024_B5
+gs.run_command("i.vi",
+                output="Flagstaff_NDVI",
+                viname="ndvi",
+                red="landsat8_2024_B4",
+                nir="landsat8_2024_B5"
   )
 ```
 :::::::::
@@ -425,7 +425,7 @@ Aqui, exploraremos a **análise de componentes principais (PCA)**. A PCA combina
 Realize uma PCA e exiba os resultados no console/terminal e como mapas de componentes da PCA.  
 
 ```{bash}
-i.pca input=landsat8_2024_B2,landsat8_2024_B3,landsat8_2024_B4, landsat8_2024_B5,landsat8_2024_B6,landsat8_2024_B7 output=Flagstaff_landsat8
+i.pca input=landsat8_2024_B2,landsat8_2024_B3,landsat8_2024_B4,landsat8_2024_B5,landsat8_2024_B6,landsat8_2024_B7 output=Flagstaff_landsat8
 ```
 
 #### Python
@@ -433,9 +433,9 @@ i.pca input=landsat8_2024_B2,landsat8_2024_B3,landsat8_2024_B4, landsat8_2024_B5
 Realize uma PCA e exiba os resultados no console/terminal e como mapas de componentes da PCA.  
 
 ```{python}
-gs.run_command("i.pca", 
-                input="landsat8_2024_B2,landsat8_2024_B3,landsat8_2024_B4, landsat8_2024_B5,landsat8_2024_B6,landsat8_2024_B7", 
-                output=Flagstaff_landsat8)
+gs.run_command("i.pca",
+                input="landsat8_2024_B2,landsat8_2024_B3,landsat8_2024_B4,landsat8_2024_B5,landsat8_2024_B6,landsat8_2024_B7",
+                output="Flagstaff_landsat8")
 ```
 ::::::
 
