@@ -1,7 +1,8 @@
 ---
 title: "Getting started with GRASS for Conda"
 author: Brendan Harmon
-date: last-modified
+date: 2026-07-03
+date-modified: today
 license: CC BY-SA
 categories: [Python, beginner]
 description: >
@@ -9,7 +10,7 @@ description: >
 image: images/natural-earth-01.webp
 bibliography: conda.bib
 links:
-  grass_projects: "[projects](https://grass.osgeo.org/grass-devel/manuals/grass_projects.html)"
+  grass_projects: "[projects](https://grass.osgeo.org/grass-stable/manuals/grass_projects.html)"
   g_proj: "[g.proj](https://grass.osgeo.org/grass-stable/manuals/g.proj.html)"
   d_rast: "[d.rast](https://grass.osgeo.org/grass-stable/manuals/d.rast.html)"
   d_vect: "[d.vect](https://grass.osgeo.org/grass-stable/manuals/d.vect.html)"
@@ -100,8 +101,8 @@ for more detailed instructions.
 
 Now that Conda is installed, 
 let's use it to create an environment for GRASS.
-We will install the GRASS and Jupyter Lab Python packages
-and all of their dependencies into this environment. 
+We will install the GRASS, Jupyter Lab, and requests Python packages
+with all of their dependencies into this environment. 
 In a terminal, 
 run {{< meta links.conda_create >}}
 to create a GRASS environment named `grass`.
@@ -112,13 +113,13 @@ to start the environment.
 
 ```{bash}
 conda create --name grass
-conda install grass jupyterlab
 conda activate grass
+conda install grass jupyterlab requests
 ```
 
 You can do this with just one line of code:
 ```{bash}
-conda create -n grass grass jupyterlab && conda activate grass
+conda create -n grass grass jupyterlab requests && conda activate grass
 ```
 
 If you use a Conda distribution other than Miniforge,
@@ -132,15 +133,15 @@ with `--override-channels` to prevent conflicts.
 
 Let's try the GRASS Python package 
 in a Jupyter notebook.
-We will using scripting to display maps
+We will use scripting to display maps
 from a sample dataset. 
 We will download the dataset,
 start a GRASS session in the dataset,
 and then display raster and vector maps
 from the dataset. 
 Let's begin by launching Jupyter Lab from the terminal.
-This will open an new Jupyter notebook
-in a web browser window. 
+This will open a new Jupyter notebook
+in a web browser window.
 
 ```{bash}
 jupyter lab
