@@ -185,7 +185,6 @@ sys.path.append(
   )
 
 # Import GRASS packages
-import grass.script as gs
 import grass.jupyter as gj
 from grass.tools import Tools
 
