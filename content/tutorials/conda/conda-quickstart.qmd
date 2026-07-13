@@ -133,7 +133,7 @@ in a Jupyter notebook.
 We will use scripting to display maps
 from a sample dataset. 
 We will download the dataset,
-start a GRASS session in the dataset,
+start a GRASS session,
 and then display raster and vector maps
 from the dataset. 
 Let's begin by launching Jupyter Lab from the terminal.
