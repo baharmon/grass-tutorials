@@ -68,7 +68,7 @@ that uses conda-forge as its default channel
 [@Miniforge]. 
 We recommend Miniforge 
 because it is the easiest, cleanest way to 
-install the GRASS Python Package.
+install the GRASS Conda Package.
 Other distributions may be incompatible with conda-forge, 
 requiring proper 
 [configuration](https://conda-forge.org/docs/user/transitioning_from_defaults/)
