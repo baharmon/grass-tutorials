@@ -102,7 +102,7 @@ We will install the GRASS, Jupyter Lab, and requests Python packages
 with all of their dependencies into this environment. 
 In a terminal, 
 run {{< meta links.conda_create >}}
-to create a GRASS environment named `grass`.
+to create an environment named `grass`.
 Then use {{< meta links.conda_install >}} 
 to install the GRASS package.
 Next, run {{< meta links.conda_activate >}}
