@@ -51,8 +51,7 @@ This brief tutorial covers:
 
 Conda is an open source package and environment manager.
 Many open source projects
-use Conda to publish their software
-as Python packages.
+use Conda to publish their software.
 With Conda, you can easily install
 collections of these packages
 in isolated environments
