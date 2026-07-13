@@ -57,7 +57,7 @@ in isolated environments
 to avoid conflicting software dependencies. 
 With Conda, packages are distributed via channels,
 remote repositories that host packages.
-The GRASS Python package is distributed via conda-forge, 
+GRASS is distributed via conda-forge, 
 a community smithy and repository
 [@condaforge].
 There are several different distributions of Conda.
