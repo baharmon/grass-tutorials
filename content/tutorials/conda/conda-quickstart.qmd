@@ -128,7 +128,7 @@ with `--override-channels` to prevent conflicts.
 
 ## Notebook
 
-Let's try the GRASS Python package 
+Let's try the newly installed GRASS Conda package 
 in a Jupyter notebook.
 We will use scripting to display maps
 from a sample dataset. 
