@@ -32,9 +32,8 @@ jupyter: python3
 
 ![Natural Earth](images/natural-earth-01.webp)
 
-This is a very short introduction to 
-the [GRASS Python package](https://grass.osgeo.org/download/conda/)
-distributed via Conda.
+This is a very short introduction to installing GRASS distributed via 
+[Conda](https://grass.osgeo.org/download/conda/).
 With the GRASS Python package,
 you can call GRASS tools 
 in Python scripts
