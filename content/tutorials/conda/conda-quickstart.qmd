@@ -30,7 +30,6 @@ execute:
 jupyter: python3
 ---
 
-![Natural Earth](images/natural-earth-01.webp)
 
 This is a very short introduction to installing GRASS distributed via 
 [Conda](https://grass.osgeo.org/download/conda/).
