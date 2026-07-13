@@ -30,13 +30,12 @@ execute:
 jupyter: python3
 ---
 
-
 This is a very short introduction to installing GRASS distributed via 
 [Conda](https://grass.osgeo.org/download/conda/).
-With the GRASS Python package,
-you can call GRASS tools 
-in Python scripts
-or Jupyter notebooks. 
+With the Conda distribution of GRASS, 
+you can install GRASS
+and the rest of the Python stack for data science
+with a single command. 
 This means that you can easily integrate GRASS
 into data science workflows 
 using the Python scientific ecosystem. 
@@ -98,8 +97,10 @@ for more detailed instructions.
 
 Now that Conda is installed, 
 let's use it to create an environment for GRASS.
-We will install the GRASS, Jupyter Lab, and requests Python packages
-with all of their dependencies into this environment. 
+In this environment, 
+we will install the following Python packages 
+complete with their dependencies: 
+GRASS, Jupyter Lab, and requests.
 In a terminal, 
 run {{< meta links.conda_create >}}
 to create an environment named `grass`.
