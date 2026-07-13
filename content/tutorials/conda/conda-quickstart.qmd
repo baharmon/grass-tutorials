@@ -247,3 +247,34 @@ m.show()
 ```
 
 ![Rivers](images/natural-earth-02.webp)
+
+## Reproducibility
+
+Conda environments can also be created 
+from an environment definition file
+that specifies the environment name, channel, and packages. 
+This is an easy way to share and reproduce your environment.
+While you can specify versions for given packages,
+this example just installs the latest compatible versions
+for simplicity's sake.
+To do this, first use a text editor to create 
+a YAML file named `environment.yml` 
+with the following contents:
+
+```yaml
+# environment.yml
+name: grass
+channels:
+  - conda-forge
+dependencies:
+  - grass
+  - jupyterlab
+  - requests
+```
+
+Then run {{< meta links.conda_env_create >}}
+using `--file` to specify your path to the environment definition file:
+
+```bash
+conda env create --file environment.yml
+```
